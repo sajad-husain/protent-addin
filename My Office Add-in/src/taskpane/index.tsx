@@ -14,12 +14,13 @@ const root = rootElement ? createRoot(rootElement) : undefined;
 Office.onReady(() => {
   root?.render(
     <FluentProvider theme={webLightTheme}>
-      <App title={title} />
+      <App />
     </FluentProvider>
   );
 });
 
 if ((module as any).hot) {
+
   (module as any).hot.accept("./components/App", () => {
     const NextApp = require("./components/App").default;
     root?.render(NextApp);
