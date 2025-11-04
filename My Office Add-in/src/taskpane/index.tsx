@@ -1,7 +1,9 @@
 import * as React from "react";
 import { createRoot } from "react-dom/client";
 import App from "./components/App";
-import { FluentProvider, webLightTheme } from "@fluentui/react-components";
+import { ThemeProvider } from "@mui/material/styles";
+import { CssBaseline } from "@mui/material"
+import { theme } from "./theme"
 
 /* global document, Office, module, require, HTMLElement */
 
@@ -13,9 +15,10 @@ const root = rootElement ? createRoot(rootElement) : undefined;
 /* Render application after Office initializes */
 Office.onReady(() => {
   root?.render(
-    <FluentProvider theme={webLightTheme}>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
       <App />
-    </FluentProvider>
+    </ThemeProvider>
   );
 });
 

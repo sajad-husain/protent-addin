@@ -1,23 +1,14 @@
 import * as React from "react";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
-
-const theme = createTheme({
-  palette: {
-    primary: { main: "#1976d2" },
-    secondary: { main: "#f50057" },
-  },
-});
-
-
-
+import { theme } from "../theme"
 
 
 const App: React.FC = () => {
 
   return (
-    <ThemeProvider theme={theme}>
+    <div>
       App
-    </ThemeProvider>
+    </div>
   );
 };
 
