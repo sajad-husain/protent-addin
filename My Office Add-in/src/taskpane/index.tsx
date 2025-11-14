@@ -12,9 +12,7 @@ const root = rootElement ? createRoot(rootElement) : undefined;
 /* Render application after Office initializes */
 Office.onReady(() => {
   root?.render(
-    <FluentProvider theme={webLightTheme}>
-      <App />
-    </FluentProvider>
+    <App />
   );
 });
 

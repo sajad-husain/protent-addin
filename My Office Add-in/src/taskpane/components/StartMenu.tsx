@@ -65,13 +65,13 @@ export const StartMenu: React.FC = () => {
                         onClick={handleMicrosoftLogin}
                         sx={{
                             mb: 2,
-                            background: '##1675fb',
+                            background: '#1875FB',
                             color: '#fff',
                             fontWeight: 600,
                             textTransform: 'none',
                             borderRadius: 5,
                             boxShadow: 'none',
-                            '&:hover': { background: '#0067b8', boxShadow: 'none' },
+                            '&:hover': { background: '#1675fb', boxShadow: 'none' },
                         }}
                     >
                         Login with Microsoft
