@@ -1,13 +1,11 @@
 import * as React from "react";
-import { ThemeProvider, createTheme } from "@mui/material/styles";
-import { theme } from "../theme"
-
+import Oauth from "./Oauth";
 
 const App: React.FC = () => {
 
   return (
     <div>
-      App
+      <Oauth />
     </div>
   );
 };
