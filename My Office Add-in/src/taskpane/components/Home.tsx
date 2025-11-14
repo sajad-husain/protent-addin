@@ -45,28 +45,23 @@ export const StartMenu: React.FC = () => {
                 }}
             >
                 <CardContent sx={{ px: 4, py: 5 }}>
-                    <Typography
-                        variant="h5"
-                        align="center"
-                        fontWeight={700}
-                        gutterBottom
-                    >
-                        Welcome back
-                    </Typography>
-                    <Typography
-                        variant="body2"
-                        align="center"
-                        color="text.secondary"
-                        sx={{ mb: 4 }}
-                    >
-                        Sign in to continue
-                    </Typography>
+                    <Box
+                        component="img"
+                        src="https://cdn.prod.website-files.com/656880d9cb0b1e4088fdd4ba/656880d9cb0b1e4088fdd50d_Portant%20Logo%20Blue.svg"
+                        alt="Portant"
+                        sx={{
+                            display: 'block',
+                            mx: 'auto',
+                            mb: 4,               // same gap that was under “Welcome back”
+                            height: 40,          // tweak to taste
+                        }}
+                    />
 
                     <Button
                         fullWidth
                         size="large"
                         variant="contained"
-                        // startIcon={<LoginIcon />}
+                        startIcon={<MicrosoftIcon />}   // ← swapped here
                         onClick={handleMicrosoftLogin}
                         sx={{
                             mb: 2,
@@ -74,12 +69,12 @@ export const StartMenu: React.FC = () => {
                             color: '#fff',
                             fontWeight: 600,
                             textTransform: 'none',
-                            borderRadius: 2,
+                            borderRadius: 5,
                             boxShadow: 'none',
-                            '&:hover': { background: '#005fa3', boxShadow: 'none' },
+                            '&:hover': { background: '#1675fb', boxShadow: 'none' },
                         }}
                     >
-                        Continue with Microsoft
+                        Login with Microsoft
                     </Button>
 
                     <Button
@@ -93,11 +88,11 @@ export const StartMenu: React.FC = () => {
                             borderColor: '#dadce0',
                             fontWeight: 600,
                             textTransform: 'none',
-                            borderRadius: 2,
+                            borderRadius: 5,
                             '&:hover': { borderColor: '#1a73e8', background: '#f8f9ff' },
                         }}
                     >
-                        Continue with Google
+                        Login with Google
                     </Button>
                 </CardContent>
             </Card>
@@ -134,5 +129,22 @@ export const GoogleIcon: React.FC<{ fontSize?: 'small' | 'medium' | 'large' }> =
             d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
             fill="#EA4335"
         />
+    </Box>
+);
+
+export const MicrosoftIcon: React.FC<{ fontSize?: 'small' | 'medium' | 'large' }> = ({
+    fontSize = 'medium',
+}) => (
+    <Box
+        component="svg"
+        viewBox="0 0 24 24"
+        width={fontSize === 'small' ? 20 : fontSize === 'large' ? 28 : 24}
+        height={fontSize === 'small' ? 20 : fontSize === 'large' ? 28 : 24}
+        fill="none"
+    >
+        <rect x="1" y="1" width="10" height="10" fill="#f35325" />
+        <rect x="13" y="1" width="10" height="10" fill="#81bc06" />
+        <rect x="1" y="13" width="10" height="10" fill="#05a6f0" />
+        <rect x="13" y="13" width="10" height="10" fill="#ffba08" />
     </Box>
 );
