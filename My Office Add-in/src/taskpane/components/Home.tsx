@@ -32,7 +32,7 @@ export const StartMenu: React.FC = () => {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                background: `linear-gradient(135deg, ${theme.palette.grey[50]} 0%, ${theme.palette.grey[100]} 100%)`,
+                // background: `linear-gradient(135deg, ${theme.palette.grey[50]} 0%, ${theme.palette.grey[100]} 100%)`,
             }}
         >
             <Card
@@ -40,7 +40,7 @@ export const StartMenu: React.FC = () => {
                 sx={{
                     width: 360,
                     borderRadius: 4,
-                    boxShadow: '0 12px 40px rgba(0,0,0,.08)',
+                    // boxShadow: '0 12px 40px rgba(0,0,0,.08)',
                     overflow: 'visible',
                 }}
             >
@@ -65,13 +65,13 @@ export const StartMenu: React.FC = () => {
                         onClick={handleMicrosoftLogin}
                         sx={{
                             mb: 2,
-                            background: '#0067b8',
+                            background: '##1675fb',
                             color: '#fff',
                             fontWeight: 600,
                             textTransform: 'none',
                             borderRadius: 5,
                             boxShadow: 'none',
-                            '&:hover': { background: '#1675fb', boxShadow: 'none' },
+                            '&:hover': { background: '#0067b8', boxShadow: 'none' },
                         }}
                     >
                         Login with Microsoft
