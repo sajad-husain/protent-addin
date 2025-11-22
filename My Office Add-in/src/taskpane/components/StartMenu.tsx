@@ -65,7 +65,7 @@ export const StartMenu: React.FC = () => {
                         onClick={handleMicrosoftLogin}
                         sx={{
                             mb: 2,
-                            background: '#1875FB',
+                            background: '#1F75FE',
                             color: '#fff',
                             fontWeight: 600,
                             textTransform: 'none',
