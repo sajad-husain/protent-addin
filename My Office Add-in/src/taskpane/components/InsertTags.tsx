@@ -42,11 +42,11 @@ const InsertTags: React.FC = () => {
                     flexDirection="row"
                     alignItems="center"
                     justifyContent="space-between"
-                    mb={2}
+                    mb={1}
                     sx={{
-                        padding: "20px",
+                        padding: "10px",
                         borderRadius: "12px",
-                        backgroundColor: "#f0f0f0",
+                        backgroundColor: "transparent",
                         boxShadow: "0px 4px 15px rgba(0, 0, 0, 0.1)",
                         border: "none",
                         maxWidth: "100%",
@@ -64,11 +64,11 @@ const InsertTags: React.FC = () => {
                             fontFamily: "'Poppins', sans-serif"
                         }}
                     >
-                        HubSpot Contacts
+                        HubSpot
                     </Typography>
-                    <Box display="flex" alignItems="center" gap={2}>
+                    <Box display="flex" alignItems="center" >
                         <IconButton
-                            size="large"
+                            size="small"
                             color="primary"
                             onClick={handleSearchToggle}
                             sx={{
@@ -79,7 +79,7 @@ const InsertTags: React.FC = () => {
                             <SearchIcon fontSize="medium" />
                         </IconButton>
                         <IconButton
-                            size="large"
+                            size="small"
                             color="primary"
                             sx={{
                                 transition: "0.3s ease",
@@ -89,7 +89,7 @@ const InsertTags: React.FC = () => {
                             <SettingsOutlinedIcon fontSize="medium" />
                         </IconButton>
                         <IconButton
-                            size="large"
+                            size="small"
                             color="primary"
                             sx={{
                                 transition: "0.3s ease",
@@ -107,7 +107,7 @@ const InsertTags: React.FC = () => {
                         display="flex"
                         flexDirection="row"
                         justifyContent="flex-start"
-                        mb={3}
+                        mb={1}
                         sx={{
                             padding: "10px 20px",
                             borderRadius: "8px",
@@ -161,7 +161,7 @@ const InsertTags: React.FC = () => {
                                 justifyContent: "space-between",
                                 marginBottom: "18px",
                                 paddingBottom: "12px",
-                                borderBottom: index !== filteredFields.length - 1 ? "1px solid #e0e0e0" : "none",
+                                borderBottom: index !== filteredFields.length - 1 ? "1px solid #e0e0e0ff" : "none",
                             }}
                         >
                             <Typography

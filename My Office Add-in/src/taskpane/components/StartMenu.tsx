@@ -1,5 +1,5 @@
 // StartMenu.tsx
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
     Box,
     Button,
@@ -8,22 +8,89 @@ import {
     Typography,
     useTheme,
 } from '@mui/material';
+import { PublicClientApplication } from "@azure/msal-browser";
+import { loginRequest, msalConfig } from "../utils/msalConfig";
+import { useNavigate } from 'react-router-dom';
+
+const msalInstance = new PublicClientApplication(msalConfig);
+
 
 
 
 
 export const StartMenu: React.FC = () => {
     const theme = useTheme();
+    const [account, setAccount] = useState(null);
+    const [accessToken, setAccessToken] = useState(null);
+    const [msalReady, setMsalReady] = useState(false);
 
-    const handleMicrosoftLogin = () => {
-        /* TODO: trigger MSAL / SSO flow */
-        console.log('Microsoft login clicked');
+    const navigate = useNavigate()
+
+    useEffect(() => {
+        const initMsal = async () => {
+            await msalInstance.initialize();
+            const accounts = msalInstance.getAllAccounts();
+            if (accounts.length > 0) {
+                setAccount(accounts[0]);
+            }
+            setMsalReady(true);
+        };
+        initMsal();
+    }, []);
+
+
+    const handleMicrosoftLogin = async () => {
+        if (!msalReady) {
+            console.error("MSAL not ready yet");
+            return;
+        }
+
+        try {
+            const loginResponse = await msalInstance.loginPopup(loginRequest);
+            setAccount(loginResponse.account);
+
+            const tokenResponse = await msalInstance.acquireTokenSilent({
+                ...loginRequest,
+                account: loginResponse.account,
+            });
+
+            setAccessToken(tokenResponse.accessToken);
+            console.log(tokenResponse.accessToken);
+
+            // navigate after successful login
+            navigate('/home');
+            console.log('Microsoft login clicked');
+        } catch (error) {
+            console.error("Login failed:", error);
+        }
     };
+
+    // const handleLogout = async () => {
+    //     // await msalInstance.logoutPopup();
+    //     setAccount(null);
+    //     setAccessToken(null);
+    // };
+
+    // let Logindialog;
+    // const officedialogopen = () => {
+    //     var a = "https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=ee73ee0e-3911-46a5-973a-22e9bfe26cac&response_type=token&redirect_uri=https://localhost:3000/assets/Redirect.html&scope=user.read%20mail.readwrite%20mail.send";
+    //     Office.context.ui.displayDialogAsync(a, { height: 60, width: 40 }, function (asyncResult) {
+    //         Logindialog = asyncResult.value;
+    //         Logindialog.addEventHandler(Office.EventType.DialogMessageReceived, LogprocessMessage);
+    //     });
+    // };
+
+    // function LogprocessMessage(arg) {
+    //     const token = arg.message;
+    //     console.log(token)
+    //     Logindialog.close();
+    // }
 
     const handleGoogleLogin = () => {
         /* TODO: trigger Google Identity Services */
         console.log('Google login clicked');
     };
+
 
     return (
         <Box
@@ -98,8 +165,7 @@ export const StartMenu: React.FC = () => {
             </Card>
         </Box>
     );
-};
-
+}
 /* ------------------------------------------------------------------ */
 /* GoogleIcon – 24×24 SVG to keep the button sharp on Hi-DPI screens  */
 /* ------------------------------------------------------------------ */
